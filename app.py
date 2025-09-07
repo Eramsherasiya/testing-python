@@ -6,3 +6,8 @@ print("4 * 5 =", 4 * 5)
 print("Loop Example:")
 for i in range(3):
     print(i)
+
+def greet(name):
+    return f"Hello {name}!"
+
+print(greet("Python"))
