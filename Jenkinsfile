@@ -1,21 +1,11 @@
 pipeline {
-    agent {
-        docker {
-            image 'jenkins-python-agent'
-            args '-u root:root' // optional if permissions needed
-        }
-    }
-
+    agent any
     stages {
-        stage('Install Requirements') {
+        stage('Build Docker') {
             steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Run Python Script') {
-            steps {
-                sh 'python your_script.py'
+                script {
+                    sh 'docker build -t jenkins-python-agent .'
+                }
             }
         }
     }
